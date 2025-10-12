@@ -41,7 +41,7 @@ module LevelDB
     end
 
     def put(key : Bytes | String, value : Bytes | String, write_options : WriteOptions = WriteOptions.new)
-      check_not_closed!
+      ensure_not_closed!
       key_ptr, key_len = to_bytes(key)
       val_ptr, val_len = to_bytes(value)
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
@@ -52,7 +52,7 @@ module LevelDB
     end
 
     def get(key : Bytes | String, read_options : ReadOptions = ReadOptions.new) : Bytes?
-      check_not_closed!
+      ensure_not_closed!
       key_ptr, key_len = to_bytes(key)
       vallen = Pointer(LibC::SizeT).malloc(1_u64)
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
@@ -75,8 +75,13 @@ module LevelDB
       bytes ? String.new(bytes) : nil
     end
 
+    # [] operator for convenient string access
+    def [](key : Bytes | String) : String?
+      get_string(key)
+    end
+
     def delete(key : Bytes | String, write_options : WriteOptions = WriteOptions.new)
-      check_not_closed!
+      ensure_not_closed!
       key_ptr, key_len = to_bytes(key)
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
       err.value = Pointer(LibC::Char).null
@@ -86,7 +91,7 @@ module LevelDB
     end
 
     def write(batch : WriteBatch, write_options : WriteOptions = WriteOptions.new)
-      check_not_closed!
+      ensure_not_closed!
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
       err.value = Pointer(LibC::Char).null
       LibLevelDB.write(@ptr, write_options.handle, batch.handle, err)
@@ -96,19 +101,19 @@ module LevelDB
 
     # Create a snapshot of the current DB state
     def create_snapshot : LibLevelDB::Snapshot
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.create_snapshot(@ptr)
     end
 
     # Release a snapshot
     def release_snapshot(snapshot : LibLevelDB::Snapshot)
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.release_snapshot(@ptr, snapshot)
     end
 
     # Get database property value
     def property(name : String) : String?
-      check_not_closed!
+      ensure_not_closed!
       prop_ptr = LibLevelDB.property_value(@ptr, name)
       return nil if prop_ptr.null?
       begin
@@ -120,21 +125,21 @@ module LevelDB
 
     # Compact the underlying storage for the key range [start_key, limit_key]
     def compact_range(start_key : Bytes | String, limit_key : Bytes | String)
-      check_not_closed!
+      ensure_not_closed!
       start_ptr, start_len = to_bytes(start_key)
       limit_ptr, limit_len = to_bytes(limit_key)
       LibLevelDB.compact_range(@ptr, start_ptr, start_len, limit_ptr, limit_len)
     end
 
     # Compact the entire database
-    def compact_all
-      check_not_closed!
+    def compact
+      ensure_not_closed!
       LibLevelDB.compact_range(@ptr, Pointer(LibC::Char).null, 0, Pointer(LibC::Char).null, 0)
     end
 
     # Create an iterator
     def iterator(read_options : ReadOptions = ReadOptions.new) : Iterator
-      check_not_closed!
+      ensure_not_closed!
       Iterator.new(self, read_options)
     end
 
@@ -168,7 +173,7 @@ module LevelDB
       end
     end
 
-    private def check_not_closed!
+    private def ensure_not_closed!
       raise Error.new("Database is closed") if @closed
     end
 

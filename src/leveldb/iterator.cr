@@ -18,43 +18,43 @@ module LevelDB
     end
 
     def valid? : Bool
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.iter_valid(@ptr) != 0_u8
     end
 
     def seek_to_first
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.iter_seek_to_first(@ptr)
       self
     end
 
     def seek_to_last
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.iter_seek_to_last(@ptr)
       self
     end
 
     def seek(key : Bytes | String)
-      check_not_closed!
+      ensure_not_closed!
       kptr, klen = to_bytes(key)
       LibLevelDB.iter_seek(@ptr, kptr, klen)
       self
     end
 
     def next
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.iter_next(@ptr)
       self
     end
 
     def prev
-      check_not_closed!
+      ensure_not_closed!
       LibLevelDB.iter_prev(@ptr)
       self
     end
 
     def key : Bytes
-      check_not_closed!
+      ensure_not_closed!
       raise Error.new("Iterator is not valid") unless valid?
       lenp = Pointer(LibC::SizeT).malloc(1_u64)
       kptr = LibLevelDB.iter_key(@ptr, lenp)
@@ -69,7 +69,7 @@ module LevelDB
     end
 
     def value : Bytes
-      check_not_closed!
+      ensure_not_closed!
       raise Error.new("Iterator is not valid") unless valid?
       lenp = Pointer(LibC::SizeT).malloc(1_u64)
       vptr = LibLevelDB.iter_value(@ptr, lenp)
@@ -85,13 +85,13 @@ module LevelDB
 
     # Yields each key-value pair
     def each(&block : Bytes, Bytes ->)
-      check_not_closed!
+      ensure_not_closed!
       seek_to_first
       while valid?
         yield key, value
         self.next
       end
-      error! # Check for any iteration errors
+      check_error # Check for any iteration errors
     end
 
     # Yields each key-value pair as strings
@@ -101,8 +101,8 @@ module LevelDB
       end
     end
 
-    def error!
-      check_not_closed!
+    def check_error
+      ensure_not_closed!
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
       err.value = Pointer(LibC::Char).null
       LibLevelDB.iter_get_error(@ptr, err)
@@ -121,7 +121,7 @@ module LevelDB
       @closed
     end
 
-    private def check_not_closed!
+    private def ensure_not_closed!
       raise Error.new("Iterator is closed") if @closed
     end
 
