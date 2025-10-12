@@ -148,7 +148,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L5" target="_blank">
+      <a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L5" target="_blank">
         leveldb/db.cr
       </a>
     
@@ -179,6 +179,25 @@
 
 
   
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#open%28path%3AString%2Coptions%3AOptions%3DOptions.new%2C%26%29-class-method" class="signature"><strong>.open</strong>(path : String, options : Options = <span class="t">Options</span>.new, &)</a>
+        
+          <div class="summary"><p>RAII-friendly block helper</p></div>
+        
+      </li>
+    
+  </ul>
+
 
   
 
@@ -246,6 +265,8 @@
       <li class="entry-summary">
         <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
         
+          <div class="summary"><p>Finalizer is only a safety net; prefer explicit close or block-style open.</p></div>
+        
       </li>
     
       <li class="entry-summary">
@@ -262,6 +283,13 @@
         <a href="#iterator%28read_options%3AReadOptions%3DReadOptions.new%29%3AIterator-instance-method" class="signature"><strong>#iterator</strong>(read_options : ReadOptions = <span class="t">ReadOptions</span>.new) : Iterator</a>
         
           <div class="summary"><p>Create an iterator</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#iterator%28read_options%3AReadOptions%3DReadOptions.new%2C%26%29-instance-method" class="signature"><strong>#iterator</strong>(read_options : ReadOptions = <span class="t">ReadOptions</span>.new, &)</a>
+        
+          <div class="summary"><p>Block-style iterator usage with ensure close</p></div>
         
       </li>
     
@@ -349,7 +377,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -357,6 +385,37 @@
 
 
   
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="open(path:String,options:Options=Options.new,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>open</strong>(path : String, options : <a href="../LevelDB/Options.html">Options</a> = <span class="t">Options</span>.new, &)
+
+        <a class="method-permalink" href="#open%28path%3AString%2Coptions%3AOptions%3DOptions.new%2C%26%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>RAII-friendly block helper</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 
@@ -381,7 +440,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -397,7 +456,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -418,7 +477,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L119" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L130" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -439,7 +498,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L111" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L122" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -460,7 +519,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L87" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L98" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -476,7 +535,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L67" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -497,7 +556,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L152" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -518,7 +577,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L162" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -531,10 +590,15 @@
         <a class="method-permalink" href="#finalize-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Finalizer is only a safety net; prefer explicit close or block-style open.</p>
+        </div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -550,7 +614,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L54" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -566,7 +630,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -587,7 +651,28 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L125" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="iterator(read_options:ReadOptions=ReadOptions.new,&amp;)-instance-method">
+      <div class="signature">
+        
+        def <strong>iterator</strong>(read_options : <a href="../LevelDB/ReadOptions.html">ReadOptions</a> = <span class="t">ReadOptions</span>.new, &)
+
+        <a class="method-permalink" href="#iterator%28read_options%3AReadOptions%3DReadOptions.new%2C%26%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Block-style iterator usage with ensure close</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L142" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -608,7 +693,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L99" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L110" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -624,7 +709,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -640,7 +725,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -661,7 +746,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L104" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -677,7 +762,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L77" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/db.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>

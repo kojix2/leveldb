@@ -148,7 +148,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L4" target="_blank">
+      <a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L4" target="_blank">
         leveldb/write_batch.cr
       </a>
     
@@ -179,6 +179,23 @@
 
 
   
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#build%28%26%29-class-method" class="signature"><strong>.build</strong>(&)</a>
+        
+      </li>
+    
+  </ul>
+
 
   
 
@@ -204,12 +221,19 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delete%28key%3ABytes%7CString%29-instance-method" class="signature"><strong>#delete</strong>(key : Bytes | String)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+          <div class="summary"><p>Finalizer is only a safety net; prefer explicit close or block usage.</p></div>
         
       </li>
     
@@ -278,7 +302,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L7" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -286,6 +310,32 @@
 
 
   
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="build(&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>build</strong>(&)
+
+        <a class="method-permalink" href="#build%28%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 
@@ -310,7 +360,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L30" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -326,7 +376,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>
+
+        <a class="method-permalink" href="#close-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L16" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -342,7 +408,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L25" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -355,10 +421,15 @@
         <a class="method-permalink" href="#finalize-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Finalizer is only a safety net; prefer explicit close or block usage.</p>
+        </div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -374,7 +445,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L5" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -390,7 +461,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/write_batch.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/189aea8e5265b873d9924440381e8698d1de77f0/src/leveldb/write_batch.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
