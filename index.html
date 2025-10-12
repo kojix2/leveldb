@@ -113,28 +113,85 @@
     <use href="#octicon-link"/>
   </svg>
 </a>LevelDB.cr</h1>
-<h2><a id="installation" class="anchor" href="#installation">
+<p>Crystal bindings for Google LevelDB (thin FFI + small high-level wrapper).</p>
+<h2><a id="requirements" class="anchor" href="#requirements">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Installation</h2>
-<ol>
-<li>
-<p>Add the dependency to your <code>shard.yml</code>:</p>
+</a>Requirements</h2>
+<ul>
+<li>macOS: <code>brew install leveldb</code></li>
+<li>Ubuntu/Debian: <code>sudo apt-get install -y libleveldb-dev</code></li>
+</ul>
+<h2><a id="install" class="anchor" href="#install">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Install</h2>
+<p>Add to <code>shard.yml</code>:</p>
 <pre><code class="language-yaml">dependencies:
   leveldb:
     github: kojix2/leveldb</code></pre>
-</li>
-<li>
-<p>Run <code>shards install</code></p>
-</li>
-</ol>
-<h2><a id="usage" class="anchor" href="#usage">
+<p>Then install:</p>
+<pre><code class="language-sh">shards install</code></pre>
+<h2><a id="quick-start" class="anchor" href="#quick-start">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
-</a>Usage</h2>
-<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;leveldb&quot;</span></code></pre>
+</a>Quick start</h2>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;leveldb&quot;</span>
+
+opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.build { <span class="o">|</span>o<span class="o">|</span> o.create_if_missing <span class="n">true</span> }
+
+<span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+  db.put <span class="s">&quot;hello&quot;</span>, <span class="s">&quot;world&quot;</span>
+  db[<span class="s">&quot;hello&quot;</span>]           <span class="c"># =&gt; &quot;world&quot;</span>
+  db.delete <span class="s">&quot;hello&quot;</span>
+  db[<span class="s">&quot;hello&quot;</span>]           <span class="c"># =&gt; nil</span>
+<span class="k">end</span></code></pre>
+<h3><a id="iterate" class="anchor" href="#iterate">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Iterate</h3>
+<pre><code class="language-crystal"><span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+  db.each_string { <span class="o">|</span>k, v<span class="o">|</span> puts <span class="s">&quot;</span><span class="i">#{</span>k<span class="i">}</span><span class="s"> </span><span class="i">#{</span>v<span class="i">}</span><span class="s">&quot;</span> }
+
+  db.iterator <span class="k">do</span> <span class="o">|</span>it<span class="o">|</span>
+    it.seek(<span class="s">&quot;b&quot;</span>)
+    <span class="k">while</span> it.valid?
+      puts it.key_string
+      it.<span class="k">next</span>
+    <span class="k">end</span>
+    it.check_error
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<h3><a id="batch" class="anchor" href="#batch">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Batch</h3>
+<pre><code class="language-crystal"><span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+  batch <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">WriteBatch</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+    b.put <span class="s">&quot;user:1&quot;</span>, <span class="s">&quot;Alice&quot;</span>
+    b.put <span class="s">&quot;user:2&quot;</span>, <span class="s">&quot;Bob&quot;</span>
+    b.delete <span class="s">&quot;old&quot;</span>
+  <span class="k">end</span>
+  db.write batch
+  batch.close
+<span class="k">end</span></code></pre>
+<h2><a id="errors" class="anchor" href="#errors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Errors</h2>
+<p>On failure, methods raise <code><a href="LevelDB/Error.html">LevelDB::Error</a></code>.</p>
+<h2><a id="tests" class="anchor" href="#tests">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Tests</h2>
+<pre><code class="language-sh">crystal spec</code></pre>
 </div>
 </body>
 </html>
