@@ -148,7 +148,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L10" target="_blank">
+      <a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L10" target="_blank">
         leveldb/options.cr
       </a>
     
@@ -171,7 +171,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        <a href="#new%28create_if_missing%3ABool%7CNil%3Dnil%2Cerror_if_exists%3ABool%7CNil%3Dnil%2Cparanoid_checks%3ABool%7CNil%3Dnil%2Cwrite_buffer_size%3AInt%7CNil%3Dnil%2Cmax_open_files%3AInt%7CNil%3Dnil%2Cblock_size%3AInt%7CNil%3Dnil%2Cblock_restart_interval%3AInt%7CNil%3Dnil%2Cmax_file_size%3AInt%7CNil%3Dnil%2Ccompression%3ALibLevelDB%3A%3ACompression%7CInt32%7CNil%3Dnil%29-class-method" class="signature"><strong>.new</strong>(create_if_missing : Bool | Nil = <span class="n">nil</span>, error_if_exists : Bool | Nil = <span class="n">nil</span>, paranoid_checks : Bool | Nil = <span class="n">nil</span>, write_buffer_size : Int | Nil = <span class="n">nil</span>, max_open_files : Int | Nil = <span class="n">nil</span>, block_size : Int | Nil = <span class="n">nil</span>, block_restart_interval : Int | Nil = <span class="n">nil</span>, max_file_size : Int | Nil = <span class="n">nil</span>, compression : LibLevelDB::Compression | Int32 | Nil = <span class="n">nil</span>)</a>
         
       </li>
     
@@ -179,23 +179,6 @@
 
 
   
-  <h2>
-    <a id="class-method-summary" class="anchor" href="#class-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Class Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#build%28%26%29-class-method" class="signature"><strong>.build</strong>(&)</a>
-        
-      </li>
-    
-  </ul>
-
 
   
 
@@ -211,17 +194,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#block_restart_interval%28n%3AInt%29-instance-method" class="signature"><strong>#block_restart_interval</strong>(n : Int)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#block_restart_interval%3D%28n%3AInt%29-instance-method" class="signature"><strong>#block_restart_interval=</strong>(n : Int)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#block_size%28size%3AInt%29-instance-method" class="signature"><strong>#block_size</strong>(size : Int)</a>
         
       </li>
     
@@ -236,27 +209,12 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#compression%28c%3ALibLevelDB%3A%3ACompression%7CInt32%29-instance-method" class="signature"><strong>#compression</strong>(c : LibLevelDB::Compression | Int32)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#compression%3D%28c%3ALibLevelDB%3A%3ACompression%7CInt32%29-instance-method" class="signature"><strong>#compression=</strong>(c : LibLevelDB::Compression | Int32)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#create_if_missing%28v%3ABool%29-instance-method" class="signature"><strong>#create_if_missing</strong>(v : Bool)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#create_if_missing%3D%28v%3ABool%29-instance-method" class="signature"><strong>#create_if_missing=</strong>(v : Bool)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#error_if_exists%28v%3ABool%29-instance-method" class="signature"><strong>#error_if_exists</strong>(v : Bool)</a>
         
       </li>
     
@@ -273,17 +231,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#max_file_size%28size%3AInt%29-instance-method" class="signature"><strong>#max_file_size</strong>(size : Int)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#max_file_size%3D%28size%3AInt%29-instance-method" class="signature"><strong>#max_file_size=</strong>(size : Int)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#max_open_files%28n%3AInt%29-instance-method" class="signature"><strong>#max_open_files</strong>(n : Int)</a>
         
       </li>
     
@@ -293,17 +241,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#paranoid_checks%28v%3ABool%29-instance-method" class="signature"><strong>#paranoid_checks</strong>(v : Bool)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#paranoid_checks%3D%28v%3ABool%29-instance-method" class="signature"><strong>#paranoid_checks=</strong>(v : Bool)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#write_buffer_size%28size%3AInt%29-instance-method" class="signature"><strong>#write_buffer_size</strong>(size : Int)</a>
         
       </li>
     
@@ -383,18 +321,18 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new-class-method">
+    <div class="entry-detail" id="new(create_if_missing:Bool|Nil=nil,error_if_exists:Bool|Nil=nil,paranoid_checks:Bool|Nil=nil,write_buffer_size:Int|Nil=nil,max_open_files:Int|Nil=nil,block_size:Int|Nil=nil,block_restart_interval:Int|Nil=nil,max_file_size:Int|Nil=nil,compression:LibLevelDB::Compression|Int32|Nil=nil)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>
+        def self.<strong>new</strong>(create_if_missing : Bool | Nil = <span class="n">nil</span>, error_if_exists : Bool | Nil = <span class="n">nil</span>, paranoid_checks : Bool | Nil = <span class="n">nil</span>, write_buffer_size : Int | Nil = <span class="n">nil</span>, max_open_files : Int | Nil = <span class="n">nil</span>, block_size : Int | Nil = <span class="n">nil</span>, block_restart_interval : Int | Nil = <span class="n">nil</span>, max_file_size : Int | Nil = <span class="n">nil</span>, compression : LibLevelDB::Compression | Int32 | Nil = <span class="n">nil</span>)
 
-        <a class="method-permalink" href="#new-class-method">#</a>
+        <a class="method-permalink" href="#new%28create_if_missing%3ABool%7CNil%3Dnil%2Cerror_if_exists%3ABool%7CNil%3Dnil%2Cparanoid_checks%3ABool%7CNil%3Dnil%2Cwrite_buffer_size%3AInt%7CNil%3Dnil%2Cmax_open_files%3AInt%7CNil%3Dnil%2Cblock_size%3AInt%7CNil%3Dnil%2Cblock_restart_interval%3AInt%7CNil%3Dnil%2Cmax_file_size%3AInt%7CNil%3Dnil%2Ccompression%3ALibLevelDB%3A%3ACompression%7CInt32%7CNil%3Dnil%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L11" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -402,32 +340,6 @@
 
 
   
-  <h2>
-    <a id="class-method-detail" class="anchor" href="#class-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Class Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="build(&amp;)-class-method">
-      <div class="signature">
-        
-        def self.<strong>build</strong>(&)
-
-        <a class="method-permalink" href="#build%28%26%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L27" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-
 
   
 
@@ -441,22 +353,6 @@
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="block_restart_interval(n:Int)-instance-method">
-      <div class="signature">
-        
-        def <strong>block_restart_interval</strong>(n : Int)
-
-        <a class="method-permalink" href="#block_restart_interval%28n%3AInt%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L103" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
     <div class="entry-detail" id="block_restart_interval=(n:Int)-instance-method">
       <div class="signature">
         
@@ -468,23 +364,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L98" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="block_size(size:Int)-instance-method">
-      <div class="signature">
-        
-        def <strong>block_size</strong>(size : Int)
-
-        <a class="method-permalink" href="#block_size%28size%3AInt%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L93" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -500,7 +380,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L88" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -516,23 +396,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L21" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="compression(c:LibLevelDB::Compression|Int32)-instance-method">
-      <div class="signature">
-        
-        def <strong>compression</strong>(c : LibLevelDB::Compression | Int32)
-
-        <a class="method-permalink" href="#compression%28c%3ALibLevelDB%3A%3ACompression%7CInt32%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L123" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -548,23 +412,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L118" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="create_if_missing(v:Bool)-instance-method">
-      <div class="signature">
-        
-        def <strong>create_if_missing</strong>(v : Bool)
-
-        <a class="method-permalink" href="#create_if_missing%28v%3ABool%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L43" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L88" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -580,23 +428,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L38" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="error_if_exists(v:Bool)-instance-method">
-      <div class="signature">
-        
-        def <strong>error_if_exists</strong>(v : Bool)
-
-        <a class="method-permalink" href="#error_if_exists%28v%3ABool%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L53" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L48" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -612,7 +444,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L48" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -633,23 +465,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L16" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="max_file_size(size:Int)-instance-method">
-      <div class="signature">
-        
-        def <strong>max_file_size</strong>(size : Int)
-
-        <a class="method-permalink" href="#max_file_size%28size%3AInt%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L113" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -665,23 +481,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L108" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="max_open_files(n:Int)-instance-method">
-      <div class="signature">
-        
-        def <strong>max_open_files</strong>(n : Int)
-
-        <a class="method-permalink" href="#max_open_files%28n%3AInt%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L83" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L83" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -697,23 +497,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L78" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="paranoid_checks(v:Bool)-instance-method">
-      <div class="signature">
-        
-        def <strong>paranoid_checks</strong>(v : Bool)
-
-        <a class="method-permalink" href="#paranoid_checks%28v%3ABool%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L63" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L68" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -729,23 +513,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L58" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="write_buffer_size(size:Int)-instance-method">
-      <div class="signature">
-        
-        def <strong>write_buffer_size</strong>(size : Int)
-
-        <a class="method-permalink" href="#write_buffer_size%28size%3AInt%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L58" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -761,7 +529,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/88460004ac4aa584300f3e6f0e3ba65c20b22a38/src/leveldb/options.cr#L68" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/60b349f878b5085f12d068e28f4dbb7f2bcc90ea/src/leveldb/options.cr#L63" target="_blank">View source</a>]
         
       </div>
     </div>
