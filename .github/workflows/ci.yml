@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Crystal
+        uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: latest
+
+      - name: Install LevelDB and shards (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libleveldb-dev libsnappy-dev
+
+      - name: Install LevelDB and shards (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew update
+          brew install leveldb snappy
+
+      - name: Setup LevelDB library path (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          echo "CRYSTAL_LIBRARY_PATH=$(brew --prefix leveldb)/lib" >> $GITHUB_ENV
+          echo "LIBRARY_PATH=$(brew --prefix leveldb)/lib:$(brew --prefix snappy)/lib:$LIBRARY_PATH" >> $GITHUB_ENV
+          echo "DYLD_FALLBACK_LIBRARY_PATH=$(brew --prefix leveldb)/lib:$(brew --prefix snappy)/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
+          echo "MallocNanoZone=0" >> $GITHUB_ENV
+
+      - name: Run specs
+        run: |
+          shards install
+          crystal spec --error-trace
+
+      - name: Run examples
+        run: |
+          for example in examples/*.cr
+          do
+            crystal run $example
+          done
