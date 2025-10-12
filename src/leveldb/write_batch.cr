@@ -6,7 +6,10 @@ module LevelDB
 
     def initialize
       @handle = LibLevelDB.writebatch_create
-      GC.add_finalizer(self) { |obj| LibLevelDB.writebatch_destroy(obj.handle) }
+    end
+
+    def finalize
+      LibLevelDB.writebatch_destroy(@handle)
     end
 
     def clear

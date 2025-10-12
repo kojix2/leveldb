@@ -6,55 +6,102 @@ module LevelDB
     getter ptr : LibLevelDB::Iterator
 
     def initialize(db : DB, read_options : ReadOptions = ReadOptions.new)
+      # Keep reference to DB to prevent it from being garbage collected
       @db = db
       @ptr = LibLevelDB.create_iterator(db.ptr, read_options.handle)
-      GC.add_finalizer(self) { |obj| LibLevelDB.iter_destroy(obj.ptr) unless obj.ptr.null? }
+      @closed = false
+    end
+
+    def finalize
+      LibLevelDB.iter_destroy(@ptr) unless @closed || @ptr.null?
     end
 
     def valid? : Bool
+      check_not_closed!
       LibLevelDB.iter_valid(@ptr) != 0_u8
     end
 
     def seek_to_first
+      check_not_closed!
       LibLevelDB.iter_seek_to_first(@ptr)
+      self
     end
 
     def seek_to_last
+      check_not_closed!
       LibLevelDB.iter_seek_to_last(@ptr)
+      self
     end
 
     def seek(key : Bytes | String)
+      check_not_closed!
       kptr, klen = to_bytes(key)
       LibLevelDB.iter_seek(@ptr, kptr, klen)
+      self
     end
 
     def next
+      check_not_closed!
       LibLevelDB.iter_next(@ptr)
+      self
     end
 
     def prev
+      check_not_closed!
       LibLevelDB.iter_prev(@ptr)
+      self
     end
 
     def key : Bytes
+      check_not_closed!
+      raise Error.new("Iterator is not valid") unless valid?
       lenp = Pointer(LibC::SizeT).malloc(1_u64)
       kptr = LibLevelDB.iter_key(@ptr, lenp)
+      raise Error.new("Failed to get key") if kptr.null?
       len = lenp.value
-      bytes = Bytes.new(len)
-      LibC.memcpy(bytes.to_unsafe.as(Pointer(Void)), kptr.as(Pointer(Void)), len)
-      bytes
+      return Bytes.empty if len == 0
+      Bytes.new(kptr, len).clone
+    end
+
+    def key_string : String
+      String.new(key)
     end
 
     def value : Bytes
+      check_not_closed!
+      raise Error.new("Iterator is not valid") unless valid?
       lenp = Pointer(LibC::SizeT).malloc(1_u64)
       vptr = LibLevelDB.iter_value(@ptr, lenp)
+      raise Error.new("Failed to get value") if vptr.null?
       len = lenp.value
-      bytes = Bytes.new(len)
-      LibC.memcpy(bytes.to_unsafe.as(Pointer(Void)), vptr.as(Pointer(Void)), len)
-      bytes
+      return Bytes.empty if len == 0
+      Bytes.new(vptr, len).clone
+    end
+
+    def value_string : String
+      String.new(value)
+    end
+
+    # Yields each key-value pair
+    def each(&block : Bytes, Bytes ->)
+      check_not_closed!
+      seek_to_first
+      while valid?
+        yield key, value
+        self.next
+      end
+      error! # Check for any iteration errors
+    end
+
+    # Yields each key-value pair as strings
+    def each_string(&block : String, String ->)
+      each do |k, v|
+        yield String.new(k), String.new(v)
+      end
     end
 
     def error!
+      check_not_closed!
       err = Pointer(Pointer(LibC::Char)).malloc(1_u64)
       err.value = Pointer(LibC::Char).null
       LibLevelDB.iter_get_error(@ptr, err)
@@ -63,9 +110,18 @@ module LevelDB
     end
 
     def close
-      return if @ptr.null?
-      LibLevelDB.iter_destroy(@ptr)
+      return if @closed
+      @closed = true
+      LibLevelDB.iter_destroy(@ptr) unless @ptr.null?
       @ptr = Pointer(Void).null.as(LibLevelDB::Iterator)
+    end
+
+    def closed?
+      @closed
+    end
+
+    private def check_not_closed!
+      raise Error.new("Iterator is closed") if @closed
     end
 
     private def to_bytes(s : String)
