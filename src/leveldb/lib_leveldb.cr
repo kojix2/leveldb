@@ -21,7 +21,7 @@ module LevelDB
 
     # Enums
     enum Compression : Int32
-      NoCompression = 0
+      NoCompression     = 0
       SnappyCompression = 1
     end
 
@@ -42,30 +42,30 @@ module LevelDB
     type WriteBatchDeletedCallback = (Pointer(Void), Pointer(LibC::Char), LibC::SizeT -> Void)
 
     # DB operations
-  fun open = "leveldb_open"(options : Options, name : Pointer(LibC::Char), errptr : Pointer(Pointer(LibC::Char))) : DB
-  fun close = "leveldb_close"(db : DB) : Void
+    fun open = "leveldb_open"(options : Options, name : Pointer(LibC::Char), errptr : Pointer(Pointer(LibC::Char))) : DB
+    fun close = "leveldb_close"(db : DB) : Void
 
-  fun put = "leveldb_put"(db : DB,
-          options : WriteOptions,
-                    key : Pointer(LibC::Char), keylen : LibC::SizeT,
-                    val : Pointer(LibC::Char), vallen : LibC::SizeT,
-                    errptr : Pointer(Pointer(LibC::Char))) : Void
+    fun put = "leveldb_put"(db : DB,
+                            options : WriteOptions,
+                            key : Pointer(LibC::Char), keylen : LibC::SizeT,
+                            val : Pointer(LibC::Char), vallen : LibC::SizeT,
+                            errptr : Pointer(Pointer(LibC::Char))) : Void
 
-  fun delete = "leveldb_delete"(db : DB,
-             options : WriteOptions,
-                       key : Pointer(LibC::Char), keylen : LibC::SizeT,
-                       errptr : Pointer(Pointer(LibC::Char))) : Void
+    fun delete = "leveldb_delete"(db : DB,
+                                  options : WriteOptions,
+                                  key : Pointer(LibC::Char), keylen : LibC::SizeT,
+                                  errptr : Pointer(Pointer(LibC::Char))) : Void
 
-  fun write = "leveldb_write"(db : DB,
-            options : WriteOptions,
-            batch : WriteBatch,
-                      errptr : Pointer(Pointer(LibC::Char))) : Void
+    fun write = "leveldb_write"(db : DB,
+                                options : WriteOptions,
+                                batch : WriteBatch,
+                                errptr : Pointer(Pointer(LibC::Char))) : Void
 
     fun get = "leveldb_get"(db : DB,
-                    options : ReadOptions,
-                    key : Pointer(LibC::Char), keylen : LibC::SizeT,
-                    vallen_out : Pointer(LibC::SizeT),
-                    errptr : Pointer(Pointer(LibC::Char))) : Pointer(LibC::Char)
+                            options : ReadOptions,
+                            key : Pointer(LibC::Char), keylen : LibC::SizeT,
+                            vallen_out : Pointer(LibC::SizeT),
+                            errptr : Pointer(Pointer(LibC::Char))) : Pointer(LibC::Char)
 
     fun create_iterator = "leveldb_create_iterator"(db : DB, options : ReadOptions) : Iterator
     fun create_snapshot = "leveldb_create_snapshot"(db : DB) : Snapshot
@@ -74,16 +74,16 @@ module LevelDB
     fun property_value = "leveldb_property_value"(db : DB, propname : Pointer(LibC::Char)) : Pointer(LibC::Char)
 
     fun approximate_sizes = "leveldb_approximate_sizes"(db : DB,
-                                  num_ranges : Int32,
-                                  range_start_key : Pointer(Pointer(LibC::Char)),
-                                  range_start_key_len : Pointer(LibC::SizeT),
-                                  range_limit_key : Pointer(Pointer(LibC::Char)),
-                                  range_limit_key_len : Pointer(LibC::SizeT),
-                                  sizes : Pointer(UInt64)) : Void
+                                                        num_ranges : Int32,
+                                                        range_start_key : Pointer(Pointer(LibC::Char)),
+                                                        range_start_key_len : Pointer(LibC::SizeT),
+                                                        range_limit_key : Pointer(Pointer(LibC::Char)),
+                                                        range_limit_key_len : Pointer(LibC::SizeT),
+                                                        sizes : Pointer(UInt64)) : Void
 
     fun compact_range = "leveldb_compact_range"(db : DB,
-                              start_key : Pointer(LibC::Char), start_key_len : LibC::SizeT,
-                              limit_key : Pointer(LibC::Char), limit_key_len : LibC::SizeT) : Void
+                                                start_key : Pointer(LibC::Char), start_key_len : LibC::SizeT,
+                                                limit_key : Pointer(LibC::Char), limit_key_len : LibC::SizeT) : Void
 
     # Management operations
     fun destroy_db = "leveldb_destroy_db"(options : Options, name : Pointer(LibC::Char), errptr : Pointer(Pointer(LibC::Char))) : Void
@@ -106,14 +106,14 @@ module LevelDB
     fun writebatch_destroy = "leveldb_writebatch_destroy"(batch : WriteBatch) : Void
     fun writebatch_clear = "leveldb_writebatch_clear"(batch : WriteBatch) : Void
     fun writebatch_put = "leveldb_writebatch_put"(batch : WriteBatch,
-                               key : Pointer(LibC::Char), klen : LibC::SizeT,
-                               val : Pointer(LibC::Char), vlen : LibC::SizeT) : Void
+                                                  key : Pointer(LibC::Char), klen : LibC::SizeT,
+                                                  val : Pointer(LibC::Char), vlen : LibC::SizeT) : Void
     fun writebatch_delete = "leveldb_writebatch_delete"(batch : WriteBatch,
-                                  key : Pointer(LibC::Char), klen : LibC::SizeT) : Void
+                                                        key : Pointer(LibC::Char), klen : LibC::SizeT) : Void
     fun writebatch_iterate = "leveldb_writebatch_iterate"(batch : WriteBatch,
-                                   state : Pointer(Void),
-                                   put : WriteBatchPutCallback,
-                                   deleted : WriteBatchDeletedCallback) : Void
+                                                          state : Pointer(Void),
+                                                          put : WriteBatchPutCallback,
+                                                          deleted : WriteBatchDeletedCallback) : Void
     fun writebatch_append = "leveldb_writebatch_append"(destination : WriteBatch, source : WriteBatch) : Void
 
     # Options
