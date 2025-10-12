@@ -148,7 +148,7 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L5" target="_blank">
+      <a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L5" target="_blank">
         leveldb/db.cr
       </a>
     
@@ -199,12 +199,76 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#closed%3F%3ABool-instance-method" class="signature"><strong>#closed?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#compact_all-instance-method" class="signature"><strong>#compact_all</strong></a>
+        
+          <div class="summary"><p>Compact the entire database</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#compact_range%28start_key%3ABytes%7CString%2Climit_key%3ABytes%7CString%29-instance-method" class="signature"><strong>#compact_range</strong>(start_key : Bytes | String, limit_key : Bytes | String)</a>
+        
+          <div class="summary"><p>Compact the underlying storage for the key range [start_key, limit_key]</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#create_snapshot%3ALibLevelDB%3A%3ASnapshot-instance-method" class="signature"><strong>#create_snapshot</strong> : LibLevelDB::Snapshot</a>
+        
+          <div class="summary"><p>Create a snapshot of the current DB state</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#delete%28key%3ABytes%7CString%2Cwrite_options%3AWriteOptions%3DWriteOptions.new%29-instance-method" class="signature"><strong>#delete</strong>(key : Bytes | String, write_options : WriteOptions = <span class="t">WriteOptions</span>.new)</a>
         
       </li>
     
       <li class="entry-summary">
+        <a href="#each%28%26block%3ABytes%2CBytes-%3E%29-instance-method" class="signature"><strong>#each</strong>(&block : Bytes, Bytes -> )</a>
+        
+          <div class="summary"><p>Iterate over all key-value pairs</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#each_string%28%26block%3AString%2CString-%3E%29-instance-method" class="signature"><strong>#each_string</strong>(&block : String, String -> )</a>
+        
+          <div class="summary"><p>Iterate over all key-value pairs as strings</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#finalize-instance-method" class="signature"><strong>#finalize</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#get%28key%3ABytes%7CString%2Cread_options%3AReadOptions%3DReadOptions.new%29%3ABytes%7CNil-instance-method" class="signature"><strong>#get</strong>(key : Bytes | String, read_options : ReadOptions = <span class="t">ReadOptions</span>.new) : Bytes | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get_string%28key%3ABytes%7CString%2Cread_options%3AReadOptions%3DReadOptions.new%29%3AString%7CNil-instance-method" class="signature"><strong>#get_string</strong>(key : Bytes | String, read_options : ReadOptions = <span class="t">ReadOptions</span>.new) : String | Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#iterator%28read_options%3AReadOptions%3DReadOptions.new%29%3AIterator-instance-method" class="signature"><strong>#iterator</strong>(read_options : ReadOptions = <span class="t">ReadOptions</span>.new) : Iterator</a>
+        
+          <div class="summary"><p>Create an iterator</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#property%28name%3AString%29%3AString%7CNil-instance-method" class="signature"><strong>#property</strong>(name : String) : String | Nil</a>
+        
+          <div class="summary"><p>Get database property value</p></div>
         
       </li>
     
@@ -215,6 +279,13 @@
     
       <li class="entry-summary">
         <a href="#put%28key%3ABytes%7CString%2Cvalue%3ABytes%7CString%2Cwrite_options%3AWriteOptions%3DWriteOptions.new%29-instance-method" class="signature"><strong>#put</strong>(key : Bytes | String, value : Bytes | String, write_options : WriteOptions = <span class="t">WriteOptions</span>.new)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#release_snapshot%28snapshot%3ALibLevelDB%3A%3ASnapshot%29-instance-method" class="signature"><strong>#release_snapshot</strong>(snapshot : LibLevelDB::Snapshot)</a>
+        
+          <div class="summary"><p>Release a snapshot</p></div>
         
       </li>
     
@@ -278,7 +349,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L8" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L8" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -310,7 +381,86 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L21" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="closed?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>closed?</strong> : Bool
+
+        <a class="method-permalink" href="#closed%3F%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compact_all-instance-method">
+      <div class="signature">
+        
+        def <strong>compact_all</strong>
+
+        <a class="method-permalink" href="#compact_all-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Compact the entire database</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="compact_range(start_key:Bytes|String,limit_key:Bytes|String)-instance-method">
+      <div class="signature">
+        
+        def <strong>compact_range</strong>(start_key : Bytes | String, limit_key : Bytes | String)
+
+        <a class="method-permalink" href="#compact_range%28start_key%3ABytes%7CString%2Climit_key%3ABytes%7CString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Compact the underlying storage for the key range [start_key, limit_key]</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L111" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="create_snapshot:LibLevelDB::Snapshot-instance-method">
+      <div class="signature">
+        
+        def <strong>create_snapshot</strong> : LibLevelDB::Snapshot
+
+        <a class="method-permalink" href="#create_snapshot%3ALibLevelDB%3A%3ASnapshot-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Create a snapshot of the current DB state</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L87" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -326,7 +476,65 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L67" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each(&amp;block:Bytes,Bytes-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>each</strong>(&block : Bytes, Bytes -> )
+
+        <a class="method-permalink" href="#each%28%26block%3ABytes%2CBytes-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Iterate over all key-value pairs</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="each_string(&amp;block:String,String-&gt;)-instance-method">
+      <div class="signature">
+        
+        def <strong>each_string</strong>(&block : String, String -> )
+
+        <a class="method-permalink" href="#each_string%28%26block%3AString%2CString-%3E%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Iterate over all key-value pairs as strings</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L141" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="finalize-instance-method">
+      <div class="signature">
+        
+        def <strong>finalize</strong>
+
+        <a class="method-permalink" href="#finalize-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L17" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -342,7 +550,65 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L43" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get_string(key:Bytes|String,read_options:ReadOptions=ReadOptions.new):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>get_string</strong>(key : Bytes | String, read_options : <a href="../LevelDB/ReadOptions.html">ReadOptions</a> = <span class="t">ReadOptions</span>.new) : String | Nil
+
+        <a class="method-permalink" href="#get_string%28key%3ABytes%7CString%2Cread_options%3AReadOptions%3DReadOptions.new%29%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L62" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="iterator(read_options:ReadOptions=ReadOptions.new):Iterator-instance-method">
+      <div class="signature">
+        
+        def <strong>iterator</strong>(read_options : <a href="../LevelDB/ReadOptions.html">ReadOptions</a> = <span class="t">ReadOptions</span>.new) : <a href="../LevelDB/Iterator.html">Iterator</a>
+
+        <a class="method-permalink" href="#iterator%28read_options%3AReadOptions%3DReadOptions.new%29%3AIterator-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Create an iterator</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L125" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="property(name:String):String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>property</strong>(name : String) : String | Nil
+
+        <a class="method-permalink" href="#property%28name%3AString%29%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Get database property value</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L99" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -358,7 +624,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -374,7 +640,28 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L23" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="release_snapshot(snapshot:LibLevelDB::Snapshot)-instance-method">
+      <div class="signature">
+        
+        def <strong>release_snapshot</strong>(snapshot : LibLevelDB::Snapshot)
+
+        <a class="method-permalink" href="#release_snapshot%28snapshot%3ALibLevelDB%3A%3ASnapshot%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Release a snapshot</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L93" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -390,7 +677,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L61" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/eae72beecc0bb1aab5f7f3a585da262dcc882da9/src/leveldb/db.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
