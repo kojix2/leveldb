@@ -144,7 +144,8 @@
 </a>Quick start</h2>
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;leveldb&quot;</span>
 
-opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.build { <span class="o">|</span>o<span class="o">|</span> o.create_if_missing <span class="n">true</span> }
+<span class="c"># Using keyword arguments</span>
+opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new(create_if_missing: <span class="n">true</span>)
 
 <span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
   db.put <span class="s">&quot;hello&quot;</span>, <span class="s">&quot;world&quot;</span>
@@ -152,18 +153,38 @@ opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</
   db.delete <span class="s">&quot;hello&quot;</span>
   db[<span class="s">&quot;hello&quot;</span>]           <span class="c"># =&gt; nil</span>
 <span class="k">end</span></code></pre>
+<h3><a id="options" class="anchor" href="#options">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Options</h3>
+<p>Configure LevelDB with keyword arguments:</p>
+<pre><code class="language-crystal">opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new(
+  create_if_missing: <span class="n">true</span>,
+  write_buffer_size: <span class="n">4</span> <span class="o">*</span> <span class="n">1024</span> <span class="o">*</span> <span class="n">1024</span>,
+  max_open_files: <span class="n">100</span>,
+  compression: <span class="t">LevelDB</span><span class="t">::</span><span class="t">LibLevelDB</span><span class="t">::</span><span class="t">Compression</span><span class="t">::</span><span class="t">SnappyCompression</span>
+)</code></pre>
+<p>Or use setters after initialization:</p>
+<pre><code class="language-crystal">opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new
+opts.create_if_missing <span class="o">=</span> <span class="n">true</span>
+opts.write_buffer_size <span class="o">=</span> <span class="n">4</span> <span class="o">*</span> <span class="n">1024</span> <span class="o">*</span> <span class="n">1024</span></code></pre>
 <h3><a id="iterate" class="anchor" href="#iterate">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>Iterate</h3>
-<pre><code class="language-crystal"><span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
-  db.each_string { <span class="o">|</span>k, v<span class="o">|</span> puts <span class="s">&quot;</span><span class="i">#{</span>k<span class="i">}</span><span class="s"> </span><span class="i">#{</span>v<span class="i">}</span><span class="s">&quot;</span> }
+<pre><code class="language-crystal">opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new(create_if_missing: <span class="n">true</span>)
 
+<span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+  <span class="c"># Simple iteration</span>
+  db.each_string { <span class="o">|</span>k, v<span class="o">|</span> puts <span class="s">&quot;</span><span class="i">#{</span>k<span class="i">}</span><span class="s"> =&gt; </span><span class="i">#{</span>v<span class="i">}</span><span class="s">&quot;</span> }
+
+  <span class="c"># Manual iteration with control</span>
   db.iterator <span class="k">do</span> <span class="o">|</span>it<span class="o">|</span>
     it.seek(<span class="s">&quot;b&quot;</span>)
     <span class="k">while</span> it.valid?
-      puts it.key_string
+      puts <span class="s">&quot;</span><span class="i">#{</span>it.key_string<span class="i">}</span><span class="s"> =&gt; </span><span class="i">#{</span>it.value_string<span class="i">}</span><span class="s">&quot;</span>
       it.<span class="k">next</span>
     <span class="k">end</span>
     it.check_error
@@ -174,7 +195,9 @@ opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</
     <use href="#octicon-link"/>
   </svg>
 </a>Batch</h3>
-<pre><code class="language-crystal"><span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+<pre><code class="language-crystal">opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new(create_if_missing: <span class="n">true</span>)
+
+<span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
   batch <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">WriteBatch</span>.build <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
     b.put <span class="s">&quot;user:1&quot;</span>, <span class="s">&quot;Alice&quot;</span>
     b.put <span class="s">&quot;user:2&quot;</span>, <span class="s">&quot;Bob&quot;</span>
@@ -182,6 +205,27 @@ opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</
   <span class="k">end</span>
   db.write batch
   batch.close
+<span class="k">end</span></code></pre>
+<h3><a id="snapshots" class="anchor" href="#snapshots">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Snapshots</h3>
+<pre><code class="language-crystal">opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">Options</span>.new(create_if_missing: <span class="n">true</span>)
+
+<span class="t">LevelDB</span><span class="t">::</span><span class="t">DB</span>.open(<span class="s">&quot;/tmp/mydb&quot;</span>, opts) <span class="k">do</span> <span class="o">|</span>db<span class="o">|</span>
+  db.put <span class="s">&quot;key&quot;</span>, <span class="s">&quot;version1&quot;</span>
+  snapshot <span class="o">=</span> db.create_snapshot
+
+  db.put <span class="s">&quot;key&quot;</span>, <span class="s">&quot;version2&quot;</span>
+
+  <span class="c"># Read from snapshot</span>
+  read_opts <span class="o">=</span> <span class="t">LevelDB</span><span class="t">::</span><span class="t">ReadOptions</span>.new
+  read_opts.snapshot <span class="o">=</span> snapshot
+  db.get_string(<span class="s">&quot;key&quot;</span>, read_opts)  <span class="c"># =&gt; &quot;version1&quot;</span>
+  db.get_string(<span class="s">&quot;key&quot;</span>)             <span class="c"># =&gt; &quot;version2&quot;</span>
+
+  db.release_snapshot(snapshot)
 <span class="k">end</span></code></pre>
 <h2><a id="errors" class="anchor" href="#errors">
   <svg class="octicon-link" aria-hidden="true">
