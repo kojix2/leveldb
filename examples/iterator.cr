@@ -5,7 +5,7 @@ db_path = "/tmp/leveldb_example_iterator"
 
 puts "=== Iterator Example ==="
 
-LevelDB::DB.open(db_path, LevelDB::Options.new.create_if_missing(true)) do |db|
+LevelDB::DB.open(db_path, LevelDB::Options.new(create_if_missing: true)) do |db|
   # Add some data
   db.put("apple", "red")
   db.put("banana", "yellow")

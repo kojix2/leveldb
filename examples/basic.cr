@@ -5,8 +5,8 @@ db_path = "/tmp/leveldb_example_basic"
 
 puts "=== Basic LevelDB Example ==="
 
-# Using block-style open (recommended)
-LevelDB::DB.open(db_path, LevelDB::Options.new.create_if_missing(true)) do |db|
+# Using block-style open with keyword arguments (recommended)
+LevelDB::DB.open(db_path, LevelDB::Options.new(create_if_missing: true)) do |db|
   # Put a key-value pair
   db.put("hello", "world")
   db.put("foo", "bar")

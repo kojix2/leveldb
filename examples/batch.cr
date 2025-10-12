@@ -5,7 +5,7 @@ db_path = "/tmp/leveldb_example_batch"
 
 puts "=== WriteBatch Example ==="
 
-LevelDB::DB.open(db_path, LevelDB::Options.new.create_if_missing(true)) do |db|
+LevelDB::DB.open(db_path, LevelDB::Options.new(create_if_missing: true)) do |db|
   # Using WriteBatch.build for atomic operations
   batch = LevelDB::WriteBatch.build do |b|
     b.put("user:1:name", "Alice")

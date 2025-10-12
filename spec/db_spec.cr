@@ -5,7 +5,7 @@ describe LevelDB::DB do
     dir = File.join(Dir.tempdir, "ldb-#{Random::Secure.hex(4)}")
     Dir.mkdir(dir)
     begin
-      opts = LevelDB::Options.build { |o| o.create_if_missing true }
+      opts = LevelDB::Options.new(create_if_missing: true)
       LevelDB::DB.open(dir, opts) do |db|
         db.closed?.should be_false
       end
@@ -27,7 +27,7 @@ describe LevelDB::DB do
     dir = File.join(Dir.tempdir, "ldb-#{Random::Secure.hex(4)}")
     Dir.mkdir(dir)
     begin
-      opts = LevelDB::Options.build { |o| o.create_if_missing true }
+      opts = LevelDB::Options.new(create_if_missing: true)
       LevelDB::DB.open(dir, opts) do |db|
         db.put "k1", "v1"
         db.get_string("k1").should eq("v1")
