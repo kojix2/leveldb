@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.16.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="leveldb">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="leveldb">
+  <title>LevelDB::Iterator - leveldb main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          leveldb
+        </a>
+      </h1>
+
+      <span class="project-version">
+        main
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="leveldb/LevelDB" data-name="leveldb">
+      <a href="../LevelDB.html">LevelDB</a>
+      
+        <ul>
+  
+  <li class=" " data-id="leveldb/LevelDB/DB" data-name="leveldb::db">
+      <a href="../LevelDB/DB.html">DB</a>
+      
+    </li>
+  
+  <li class=" " data-id="leveldb/LevelDB/Error" data-name="leveldb::error">
+      <a href="../LevelDB/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" current" data-id="leveldb/LevelDB/Iterator" data-name="leveldb::iterator">
+      <a href="../LevelDB/Iterator.html">Iterator</a>
+      
+    </li>
+  
+  <li class=" " data-id="leveldb/LevelDB/Options" data-name="leveldb::options">
+      <a href="../LevelDB/Options.html">Options</a>
+      
+    </li>
+  
+  <li class=" " data-id="leveldb/LevelDB/ReadOptions" data-name="leveldb::readoptions">
+      <a href="../LevelDB/ReadOptions.html">ReadOptions</a>
+      
+    </li>
+  
+  <li class=" " data-id="leveldb/LevelDB/WriteBatch" data-name="leveldb::writebatch">
+      <a href="../LevelDB/WriteBatch.html">WriteBatch</a>
+      
+    </li>
+  
+  <li class=" " data-id="leveldb/LevelDB/WriteOptions" data-name="leveldb::writeoptions">
+      <a href="../LevelDB/WriteOptions.html">WriteOptions</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> LevelDB::<wbr>Iterator
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../LevelDB/Iterator.html">LevelDB::Iterator</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L5" target="_blank">
+        leveldb/iterator.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+  
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28db%3ADB%2Cread_options%3AReadOptions%3DReadOptions.new%29-class-method" class="signature"><strong>.new</strong>(db : DB, read_options : ReadOptions = <span class="t">ReadOptions</span>.new)</a>
+        
+      </li>
+    
+  </ul>
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#close-instance-method" class="signature"><strong>#close</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#error%21-instance-method" class="signature"><strong>#error!</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#key%3ABytes-instance-method" class="signature"><strong>#key</strong> : Bytes</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#next-instance-method" class="signature"><strong>#next</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#prev-instance-method" class="signature"><strong>#prev</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ptr%3ALibLevelDB%3A%3AIterator-instance-method" class="signature"><strong>#ptr</strong> : LibLevelDB::Iterator</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seek%28key%3ABytes%7CString%29-instance-method" class="signature"><strong>#seek</strong>(key : Bytes | String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seek_to_first-instance-method" class="signature"><strong>#seek_to_first</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#seek_to_last-instance-method" class="signature"><strong>#seek_to_last</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#valid%3F%3ABool-instance-method" class="signature"><strong>#valid?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#value%3ABytes-instance-method" class="signature"><strong>#value</strong> : Bytes</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(db:DB,read_options:ReadOptions=ReadOptions.new)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(db : <a href="../LevelDB/DB.html">DB</a>, read_options : <a href="../LevelDB/ReadOptions.html">ReadOptions</a> = <span class="t">ReadOptions</span>.new)
+
+        <a class="method-permalink" href="#new%28db%3ADB%2Cread_options%3AReadOptions%3DReadOptions.new%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="close-instance-method">
+      <div class="signature">
+        
+        def <strong>close</strong>
+
+        <a class="method-permalink" href="#close-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="error!-instance-method">
+      <div class="signature">
+        
+        def <strong>error!</strong>
+
+        <a class="method-permalink" href="#error%21-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L57" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="key:Bytes-instance-method">
+      <div class="signature">
+        
+        def <strong>key</strong> : Bytes
+
+        <a class="method-permalink" href="#key%3ABytes-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L39" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="next-instance-method">
+      <div class="signature">
+        
+        def <strong>next</strong>
+
+        <a class="method-permalink" href="#next-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L31" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="prev-instance-method">
+      <div class="signature">
+        
+        def <strong>prev</strong>
+
+        <a class="method-permalink" href="#prev-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ptr:LibLevelDB::Iterator-instance-method">
+      <div class="signature">
+        
+        def <strong>ptr</strong> : LibLevelDB::Iterator
+
+        <a class="method-permalink" href="#ptr%3ALibLevelDB%3A%3AIterator-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seek(key:Bytes|String)-instance-method">
+      <div class="signature">
+        
+        def <strong>seek</strong>(key : Bytes | String)
+
+        <a class="method-permalink" href="#seek%28key%3ABytes%7CString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seek_to_first-instance-method">
+      <div class="signature">
+        
+        def <strong>seek_to_first</strong>
+
+        <a class="method-permalink" href="#seek_to_first-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="seek_to_last-instance-method">
+      <div class="signature">
+        
+        def <strong>seek_to_last</strong>
+
+        <a class="method-permalink" href="#seek_to_last-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="valid?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>valid?</strong> : Bool
+
+        <a class="method-permalink" href="#valid%3F%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="value:Bytes-instance-method">
+      <div class="signature">
+        
+        def <strong>value</strong> : Bytes
+
+        <a class="method-permalink" href="#value%3ABytes-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L48" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
+</html>

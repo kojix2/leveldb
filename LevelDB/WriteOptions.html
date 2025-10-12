@@ -10,13 +10,13 @@
 
 
 
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/doc.js"></script>
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="leveldb">
-  <title>LevelDB - leveldb main</title>
+  <title>LevelDB::WriteOptions - leveldb main</title>
   <script type="text/javascript">
-    CrystalDocs.base_path = "";
+    CrystalDocs.base_path = "../";
   </script>
 </head>
 <body>
@@ -39,7 +39,7 @@
 
     <div class="project-summary">
       <h1 class="project-name">
-        <a href="index.html">
+        <a href="../index.html">
           leveldb
         </a>
       </h1>
@@ -58,42 +58,42 @@
     <ul>
   
   <li class="parent open current" data-id="leveldb/LevelDB" data-name="leveldb">
-      <a href="LevelDB.html">LevelDB</a>
+      <a href="../LevelDB.html">LevelDB</a>
       
         <ul>
   
   <li class=" " data-id="leveldb/LevelDB/DB" data-name="leveldb::db">
-      <a href="LevelDB/DB.html">DB</a>
+      <a href="../LevelDB/DB.html">DB</a>
       
     </li>
   
   <li class=" " data-id="leveldb/LevelDB/Error" data-name="leveldb::error">
-      <a href="LevelDB/Error.html">Error</a>
+      <a href="../LevelDB/Error.html">Error</a>
       
     </li>
   
   <li class=" " data-id="leveldb/LevelDB/Iterator" data-name="leveldb::iterator">
-      <a href="LevelDB/Iterator.html">Iterator</a>
+      <a href="../LevelDB/Iterator.html">Iterator</a>
       
     </li>
   
   <li class=" " data-id="leveldb/LevelDB/Options" data-name="leveldb::options">
-      <a href="LevelDB/Options.html">Options</a>
+      <a href="../LevelDB/Options.html">Options</a>
       
     </li>
   
   <li class=" " data-id="leveldb/LevelDB/ReadOptions" data-name="leveldb::readoptions">
-      <a href="LevelDB/ReadOptions.html">ReadOptions</a>
+      <a href="../LevelDB/ReadOptions.html">ReadOptions</a>
       
     </li>
   
   <li class=" " data-id="leveldb/LevelDB/WriteBatch" data-name="leveldb::writebatch">
-      <a href="LevelDB/WriteBatch.html">WriteBatch</a>
+      <a href="../LevelDB/WriteBatch.html">WriteBatch</a>
       
     </li>
   
-  <li class=" " data-id="leveldb/LevelDB/WriteOptions" data-name="leveldb::writeoptions">
-      <a href="LevelDB/WriteOptions.html">WriteOptions</a>
+  <li class=" current" data-id="leveldb/LevelDB/WriteOptions" data-name="leveldb::writeoptions">
+      <a href="../LevelDB/WriteOptions.html">WriteOptions</a>
       
     </li>
   
@@ -112,11 +112,13 @@
 <h1 class="type-name">
 
   <span class="kind">
-    module
-  </span> LevelDB
+    class
+  </span> LevelDB::<wbr>WriteOptions
 
 </h1>
 
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../LevelDB/WriteOptions.html">LevelDB::WriteOptions</a></li><li class="superclass">LevelDB::Handle(LevelDB::LibLevelDB::WriteOptions)</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
@@ -146,95 +148,30 @@
   </h2>
   
     
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb.cr#L8" target="_blank">
-        leveldb.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/db.cr#L4" target="_blank">
-        leveldb/db.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/errors.cr#L1" target="_blank">
-        leveldb/errors.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/iterator.cr#L4" target="_blank">
-        leveldb/iterator.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/lib_leveldb.cr#L1" target="_blank">
-        leveldb/lib_leveldb.cr
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/options.cr#L1" target="_blank">
+      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/options.cr#L72" target="_blank">
         leveldb/options.cr
       </a>
     
     <br/>
   
-    
-      <a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/write_batch.cr#L3" target="_blank">
-        leveldb/write_batch.cr
-      </a>
-    
-    <br/>
-  
 
 
 
-  
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-      Constant Summary
-    </h2>
-  
-  <dl>
-    
-      <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="o">{{</span> (<span class="s">`shards version /home/runner/work/leveldb/leveldb/src`</span>).chomp.stringify }}</code>
-      </dt>
-      
-    
-  </dl>
 
-
-
-  
 
   
   <h2>
-    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+    <a id="constructors" class="anchor" href="#constructors">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Class Method Summary
+    Constructors
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#raise_if_error%28errptr%3APointer%28Pointer%28LibC%3A%3AChar%29%29%29-class-method" class="signature"><strong>.raise_if_error</strong>(errptr : Pointer(Pointer(LibC::Char)))</a>
-        
-          <div class="summary"><p>Internal helper to check C error pointer, raise if set, and free.</p></div>
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
         
       </li>
     
@@ -245,40 +182,105 @@
 
   
 
-
-  <div class="methods-inherited">
-    
-  </div>
-
-  
-
   
   <h2>
-    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Class Method Detail
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#sync%3D%28v%3ABool%29-instance-method" class="signature"><strong>#sync=</strong>(v : Bool)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+  <h3>Instance methods inherited from class <code>LevelDB::Handle(LevelDB::LibLevelDB::WriteOptions)</code></h3>
+  
+  
+    <a href="../LevelDB/Handle.html#handle%3AT-instance-method" class="tooltip">
+      <span>handle : T</span>
+    handle</a>, 
+    
+  
+    <a href="../LevelDB/Handle.html#handle%3F%3AT%7CNil-instance-method" class="tooltip">
+      <span>handle? : T | Nil</span>
+    handle?</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+  </div>
+
+  
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="raise_if_error(errptr:Pointer(Pointer(LibC::Char)))-class-method">
+    <div class="entry-detail" id="new-class-method">
       <div class="signature">
         
-        def self.<strong>raise_if_error</strong>(errptr : Pointer(Pointer(LibC::Char)))
+        def self.<strong>new</strong>
 
-        <a class="method-permalink" href="#raise_if_error%28errptr%3APointer%28Pointer%28LibC%3A%3AChar%29%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new-class-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-          <p>Internal helper to check C error pointer, raise if set, and free.</p>
-        </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/errors.cr#L7" target="_blank">View source</a>]
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/options.cr#L73" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -288,6 +290,34 @@
   
 
   
+
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="sync=(v:Bool)-instance-method">
+      <div class="signature">
+        
+        def <strong>sync=</strong>(v : Bool)
+
+        <a class="method-permalink" href="#sync%3D%28v%3ABool%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/kojix2/leveldb/blob/c0b217df33c561337086abfeea9e2a7d572cc13b/src/leveldb/options.cr#L78" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
 
 </div>
