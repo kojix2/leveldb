@@ -8,8 +8,26 @@ module LevelDB
       @handle = LibLevelDB.writebatch_create
     end
 
+    # Finalizer is only a safety net; prefer explicit close or block usage.
     def finalize
+      LibLevelDB.writebatch_destroy(@handle) unless @handle.null?
+    end
+
+    def close
+      return if @handle.null?
       LibLevelDB.writebatch_destroy(@handle)
+      @handle = Pointer(Void).null.as(LibLevelDB::WriteBatch)
+    end
+
+    def self.build(&)
+      b = new
+      begin
+        yield b
+        b
+      rescue ex
+        b.close
+        raise ex
+      end
     end
 
     def clear

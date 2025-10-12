@@ -12,9 +12,27 @@ module LevelDB
       super LibLevelDB.options_create
     end
 
+    # Finalizer is a safety net. Prefer using with a block or explicit close.
     def finalize
       return if @handle.nil?
       LibLevelDB.options_destroy(@handle.not_nil!)
+    end
+
+    def close
+      return if @handle.nil?
+      LibLevelDB.options_destroy(@handle.not_nil!)
+      @handle = Pointer(Void).null.as(LibLevelDB::Options)
+    end
+
+    def self.build(&)
+      o = new
+      begin
+        yield o
+        o
+      rescue ex
+        o.close
+        raise ex
+      end
     end
 
     def create_if_missing=(v : Bool)
@@ -113,9 +131,16 @@ module LevelDB
       super LibLevelDB.readoptions_create
     end
 
+    # Finalizer is a safety net. Prefer using with a block or explicit close.
     def finalize
       return if @handle.nil?
       LibLevelDB.readoptions_destroy(@handle.not_nil!)
+    end
+
+    def close
+      return if @handle.nil?
+      LibLevelDB.readoptions_destroy(@handle.not_nil!)
+      @handle = Pointer(Void).null.as(LibLevelDB::ReadOptions)
     end
 
     def verify_checksums=(v : Bool)
@@ -154,9 +179,16 @@ module LevelDB
       super LibLevelDB.writeoptions_create
     end
 
+    # Finalizer is a safety net. Prefer using with a block or explicit close.
     def finalize
       return if @handle.nil?
       LibLevelDB.writeoptions_destroy(@handle.not_nil!)
+    end
+
+    def close
+      return if @handle.nil?
+      LibLevelDB.writeoptions_destroy(@handle.not_nil!)
+      @handle = Pointer(Void).null.as(LibLevelDB::WriteOptions)
     end
 
     def sync=(v : Bool)

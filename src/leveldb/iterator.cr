@@ -12,6 +12,7 @@ module LevelDB
       @closed = false
     end
 
+    # Finalizer is only a safety net; prefer explicit close or block usage.
     def finalize
       LibLevelDB.iter_destroy(@ptr) unless @closed || @ptr.null?
     end

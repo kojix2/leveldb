@@ -14,8 +14,19 @@ module LevelDB
       @closed = false
     end
 
+    # Finalizer is only a safety net; prefer explicit close or block-style open.
     def finalize
       LibLevelDB.close(@ptr) unless @closed || @ptr.null?
+    end
+
+    # RAII-friendly block helper
+    def self.open(path : String, options : Options = Options.new, &)
+      db = new(path, options)
+      begin
+        yield db
+      ensure
+        db.close
+      end
     end
 
     def close
@@ -125,6 +136,16 @@ module LevelDB
     def iterator(read_options : ReadOptions = ReadOptions.new) : Iterator
       check_not_closed!
       Iterator.new(self, read_options)
+    end
+
+    # Block-style iterator usage with ensure close
+    def iterator(read_options : ReadOptions = ReadOptions.new, &)
+      it = iterator(read_options)
+      begin
+        yield it
+      ensure
+        it.close
+      end
     end
 
     # Iterate over all key-value pairs
