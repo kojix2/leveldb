@@ -17,10 +17,10 @@ module LevelDB
       block_size : Int? = nil,
       block_restart_interval : Int? = nil,
       max_file_size : Int? = nil,
-      compression : (LibLevelDB::Compression | Int32)? = nil
+      compression : (LibLevelDB::Compression | Int32)? = nil,
     )
       super LibLevelDB.options_create
-      
+
       self.create_if_missing = create_if_missing unless create_if_missing.nil?
       self.error_if_exists = error_if_exists unless error_if_exists.nil?
       self.paranoid_checks = paranoid_checks unless paranoid_checks.nil?
@@ -43,7 +43,6 @@ module LevelDB
       LibLevelDB.options_destroy(@handle.not_nil!)
       @handle = Pointer(Void).null.as(LibLevelDB::Options)
     end
-
 
     def create_if_missing=(v : Bool)
       LibLevelDB.options_set_create_if_missing(handle, v ? 1_u8 : 0_u8)
